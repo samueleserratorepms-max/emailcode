@@ -4,69 +4,65 @@ This file provides guidance for AI assistants working on the **emailcode** repos
 
 ## Project Overview
 
-This is a newly initialized repository. The project name suggests functionality related to email-based verification codes or authentication. As the project evolves, update this file to reflect the actual implementation.
+This repository contains HTML email templates designed for **Klaviyo** (email marketing platform). The templates are for **WLOOM Brand**, a pet products e-commerce store. Templates are standalone HTML files with inline CSS, optimized for email client compatibility and mobile responsiveness.
 
-## Repository Status
+## Repository Structure
 
-- **State**: Fresh repository — no source code, dependencies, or configuration yet
-- **Remote**: `samueleserratorepms-max/emailcode`
-
-## Development Guidelines
-
-### Getting Started
-
-When initializing this project, establish:
-
-1. A `package.json` (or equivalent manifest for the chosen language/runtime)
-2. A source directory structure (e.g., `src/`)
-3. A test directory (e.g., `tests/` or `__tests__/`)
-4. Linting and formatting configuration
-
-### Conventions to Follow
-
-- **Commits**: Use clear, descriptive commit messages. Prefer conventional commit format (e.g., `feat:`, `fix:`, `docs:`, `test:`, `chore:`)
-- **Branching**: Development branches follow the pattern `claude/<description>`
-- **Code style**: Configure a linter and formatter early; enforce consistency from the first file
-- **Testing**: Write tests alongside new functionality; do not merge untested code
-- **Security**: Never commit secrets, API keys, or credentials. Use environment variables and `.env` files (excluded via `.gitignore`)
-
-### Commands
-
-_No build/test/lint commands configured yet. Update this section as tooling is added._
-
-<!-- Example (uncomment and adapt when applicable):
 ```
-npm install          # Install dependencies
-npm run build        # Build the project
-npm test             # Run tests
-npm run lint         # Run linter
-npm run lint:fix     # Auto-fix lint issues
+emailcode/
+  CLAUDE.md            # AI assistant guidance (this file)
+  email-template.html  # Klaviyo-ready product launch email template
 ```
--->
-
-## Architecture
-
-_No architecture defined yet. Document the following as the project takes shape:_
-
-- Entry points and main modules
-- Key abstractions and data flow
-- External service integrations (email providers, SMTP, etc.)
-- Database or storage layer (if any)
-- API surface (endpoints, CLI commands, library exports)
 
 ## Key Files
 
 | Path | Purpose |
 |------|---------|
 | `CLAUDE.md` | AI assistant guidance (this file) |
+| `email-template.html` | Product launch email for Klaviyo — presents Ducky, Rex, and Power Ball 2.0 |
 
-_Add entries as files are created._
+## Technical Details
+
+### Email Template Conventions
+
+- **Pure HTML + inline CSS** — no external stylesheets, no JavaScript
+- **Table-based layout** for maximum email client compatibility
+- MSO (Microsoft Outlook) conditional comments for Outlook rendering
+- VML roundrect buttons as Outlook fallback for border-radius CTAs
+- Responsive via `@media` queries at 620px breakpoint
+- Klaviyo merge tags for unsubscribe: `{% unsubscribe_url %}`
+- All images use absolute URLs from the WLOOM CDN (`wloombrand.com/cdn/shop/files/...`)
+
+### Brand Guidelines
+
+- **Primary color**: `#2F7D68` (teal green)
+- **Accent/free color**: `#E8A838` (gold/amber)
+- **Sale/urgency color**: `#D94F4F` (red)
+- **Heading font**: Georgia, 'Times New Roman', serif
+- **Body font**: 'Helvetica Neue', Helvetica, Arial, sans-serif
+- **Tone**: Professional, conversion-focused, Italian language
+- **Style**: Clean, modern pet store branding
+
+### Testing
+
+To preview templates:
+1. Open the `.html` file in a browser for a quick visual check
+2. Use [Litmus](https://litmus.com) or [Email on Acid](https://emailonacid.com) for cross-client testing
+3. Paste into Klaviyo's code editor and use Klaviyo's preview/test send feature
+
+### Conventions to Follow
+
+- **Commits**: Use clear, descriptive commit messages with conventional commit format (`feat:`, `fix:`, `docs:`)
+- **Branching**: Development branches follow the pattern `claude/<description>`
+- **Images**: Always use absolute HTTPS URLs; never embed base64 images
+- **Responsiveness**: Test all templates on mobile viewports (320px–414px)
+- **Accessibility**: Include alt text on all images; maintain sufficient color contrast
+- **Outlook compatibility**: Always include MSO conditional blocks for buttons and layout
 
 ## Maintenance
 
 Keep this file up to date as the project evolves:
 
-- Add new commands when tooling is configured
-- Document architecture decisions
-- List key files and their purposes
-- Note any non-obvious conventions or gotchas
+- Add new template files to the Key Files table
+- Document any new Klaviyo merge tags or dynamic blocks used
+- Update brand guidelines if colors or fonts change
